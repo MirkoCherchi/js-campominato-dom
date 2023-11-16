@@ -8,6 +8,7 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Indie Flower', cursive;
 }
 
 header, footer{
@@ -29,6 +30,7 @@ header, footer{
 
 h1{
     padding-left: 10px;
+    font-size: 50px;
 }
 
 main{
@@ -60,12 +62,14 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 #difficult{
     padding: 1px;
-    padding-right: 80px;
-    font-size: 16px;
+    padding-right: 150px;
+    font-size: 15px;
     margin-right: 5px;
     align-items: center;
     justify-content: center;
@@ -111,4 +115,13 @@ main{
     display: flex;
     justify-content: center;
 }
+
+.created{
+    font-size: 25px;
+}
+
+.tit-diff{
+    font-size: 20px;
+}
+
 
