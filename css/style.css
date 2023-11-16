@@ -101,3 +101,14 @@ main{
     background-color: lawngreen;
 
 }
+
+.bomb-clicked {
+    background-color: red;
+}
+
+.punteggio{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
