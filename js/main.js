@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 /*
 Funzioni
 */
@@ -34,17 +32,19 @@ function creaContCell(mainElement, cellNumber) {
     elementiCreati.classList.add(`cell-${cell}`);
 
     elementiCreati.addEventListener('click', function () {
-      if (!bombeArray) {
-        bombeArray = creazioneBombe(cellNumber);
-      }
+      if (gameInProgress) { 
+        if (!bombeArray) {
+          bombeArray = creazioneBombe(cellNumber);
+        }
 
-      if (bombeArray.includes(i)) {
-        // Hai cliccato su una bomba
-        elementiCreati.classList.add('bomb-clicked');
-        gameOver(mainElement, bombeArray);
-      } else {
-        // Hai cliccato su una cella sicura
-        elementiCreati.classList.add('click');
+        if (bombeArray.includes(i)) {
+         
+          elementiCreati.classList.add('bomb-click');
+          gameOver(mainElement, bombeArray);
+        } else {
+          
+          elementiCreati.classList.add('click');
+        }
       }
     });
 
@@ -54,8 +54,10 @@ function creaContCell(mainElement, cellNumber) {
   mainElement.append(fragment);
 }
 
+
 function contGame() {
   resetGame();
+  gameInProgress = true;
   const cont = document.querySelector('.cont-game');
   const levelSelect = document.getElementById('difficult');
   const level = parseInt(levelSelect.value);
@@ -84,7 +86,12 @@ function creazioneBombe(cellNumber) {
   return bombeArray;
 }
 
-function gameOver() {
+function gameOver(mainElement, bombeArray) {
+  gameInProgress = false;
+  bombeArray.forEach(bomba => {
+    const bombCell = mainElement.querySelector(`.cell-${Math.sqrt(cellNumber)}:nth-child(${bomba})`);
+    bombCell.classList.add('bomb-click');
+  });
   console.log('Game Over!');
   comunicarePunteggio();
 }
@@ -94,13 +101,14 @@ function comunicarePunteggio() {
   const celleCliccate = document.querySelectorAll('.click');
   console.log('Il tuo punteggio è:', celleCliccate.length);
   const punteggioFinale = document.querySelector('.punteggio');
-  punteggioFinale.append('Il tuo punteggio è: ', celleCliccate.length);
-  
+  punteggioFinale.innerHTML = 'Il tuo punteggio è: ' + celleCliccate.length;
 }
 
 /*
 Gioco
 */
+
+let gameInProgress = true;
 let cellNumber;
 let bombeArray; 
 const inizioGioco = document.querySelector('.btn');
