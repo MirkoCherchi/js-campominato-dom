@@ -82,7 +82,6 @@ function creazioneBombe(cellNumber) {
       bombeArray.push(bomba);
     }
   }
-  console.log(bombeArray);
   return bombeArray;
 }
 
