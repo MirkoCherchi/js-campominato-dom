@@ -8,7 +8,7 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 header, footer{
@@ -114,6 +114,7 @@ main{
 
 .bomb-click {
     background-color: red;
+    color: #fff;
 }
 
 .punteggio{
